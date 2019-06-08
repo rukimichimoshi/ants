@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body style="background-image: url(bg.jpg);">
+	<div style="display: flex;">
+		<h1 class="xxc">Количество муравьев:</h1>
+	<h1 class="score">0</h1>
+	</div>
+	<div style="display: flex;">
+		<h1>убито муравьев:</h1>
+	<h1 class="score2">0</h1>
+	</div>
+	<script type="text/javascript">
+		let scores1 = 0;
+		let scores2 = 0;
+
+		let interv= function(){
+			let random = Math.random()*1300
+			let round = Math.round(random)
+
+			let randomtop = Math.random()*700
+			let roundtop = Math.round(randomtop)
+			let scores1_block = document.querySelector(".score")
+			let scores2_block =	document.querySelector(".score2")
+			let newDiv = document.createElement('img');
+			document.body.appendChild(newDiv);
+			newDiv.src = "img.svg"
+			newDiv.style.height = "100px";
+			newDiv.style.width = "100px";
+			newDiv.style.marginLeft = round + "px";
+			newDiv.style.marginTop = roundtop + "px";
+			newDiv.style.position = "absolute";
+			scores1 = scores1 + 1;
+			scores1_block.innerHTML = scores1;
+
+			newDiv.onclick = function(){
+				newDiv.style.display = "none";
+				scores2 = scores2 + 1;
+				scores2_block.innerHTML = scores2;
+			}
+			}
+
+		let sss = setInterval(interv,1000)
+		let time = function(){
+			if ( scores1 == scores2 + 1 ){
+				alert("вы победили")
+			}
+			else{
+				alert("вы проиграли")
+			}
+			clearInterval(sss)
+		}
+
+		setTimeout(time,10000)
+	</script>
+</body>
+</html>
